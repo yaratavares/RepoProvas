@@ -32,6 +32,7 @@ export default async function valideLogin(
       toast.error("Erro na comunicação com o servidor");
       return;
     }
+    console.log(err);
     toast.error("Erro desconhecido! Atualize a página");
     return;
   }
