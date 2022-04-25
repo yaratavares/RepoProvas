@@ -6,10 +6,9 @@ import { Collapse, ListItemButton, ListItemText } from "@mui/material";
 import { ContentBoxList } from "./styled";
 import ListNestedSecondary from "./ListNestedSecondary";
 
-export default function ListNested({ term }) {
+export default function ListNestedDisciplines({ term }) {
   const [open, setOpen] = useState(false);
 
-  console.log(term);
   return (
     <ContentBoxList>
       <ListItemButton onClick={() => setOpen(!open)}>

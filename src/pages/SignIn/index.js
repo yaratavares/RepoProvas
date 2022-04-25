@@ -8,7 +8,7 @@ import CommonInput from "../../components/inputs/CommonInput";
 import InitDivider from "../../components/divider/InitDivider";
 
 import valideLogin from "../../validations/validateLogin";
-import logo from "../../common/assets/logo.jpg";
+import logo from "../../common/assets/logo.png";
 import {
   ContainerCenterPage,
   InitContent,

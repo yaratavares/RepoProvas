@@ -20,6 +20,10 @@ function getDisciplines() {
   return axios.get(`${BASE_URL}/disciplines`);
 }
 
-const api = { authLogin, authSignUp, getDisciplines };
+function getTeachers() {
+  return axios.get(`${BASE_URL}/teachers`);
+}
+
+const api = { authLogin, authSignUp, getDisciplines, getTeachers };
 
 export default api;

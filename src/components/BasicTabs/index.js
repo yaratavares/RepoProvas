@@ -3,7 +3,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 
-import ListNested from "../ListNested";
+import ListNestedDisciplines from "../ListNestedDisciplines";
+import ListNestedTeachers from "../ListNestedTeachers";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -28,12 +29,13 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs({ disciplines }) {
+export default function BasicTabs({ disciplines, teachers }) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  console.log(teachers);
 
   return (
     <Box
@@ -57,11 +59,13 @@ export default function BasicTabs({ disciplines }) {
       </Box>
       <TabPanel value={value} index={0} className="contentList">
         {disciplines.map((term) => (
-          <ListNested term={term} />
+          <ListNestedDisciplines term={term} />
         ))}
       </TabPanel>
       <TabPanel value={value} index={1} className="contentList">
-        <ListNested />
+        {teachers.map((teacher) => (
+          <ListNestedTeachers teacher={teacher} />
+        ))}
       </TabPanel>
       <TabPanel value={value} index={2} className="contentList" />
     </Box>

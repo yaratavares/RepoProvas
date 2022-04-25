@@ -5,7 +5,6 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 export default function ListNestedSecondary({ discipline }) {
   const [openSecundary, setOpenSecundary] = useState(false);
 
-  console.log(discipline);
   return (
     <>
       <ListItemButton
@@ -27,7 +26,7 @@ export default function ListNestedSecondary({ discipline }) {
             <ListItemButton sx={{ pl: 4 }}>
               <ListItemText
                 primary={`${test.category.name}`}
-                secondary={`${test.name}`}
+                secondary={`${test.name} - (${discipline.teachers[0].teacher.name})`}
               />
             </ListItemButton>
           </List>

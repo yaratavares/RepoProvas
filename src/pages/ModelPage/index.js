@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
+
 import api from "../../common/services";
 import BasicTabs from "../../components/BasicTabs";
 import Header from "../../components/Header";
+
 import { ContentNavButtons, ContentPageModel } from "./style";
 
 export default function ModelPage() {
   const [disciplines, setDisciplines] = useState();
+  const [teachers, setTeachers] = useState();
 
   useEffect(() => {
     initPage();
@@ -13,19 +16,22 @@ export default function ModelPage() {
 
   async function initPage() {
     try {
-      const result = await api.getDisciplines();
-      setDisciplines(result.data);
+      const responseDisciplines = await api.getDisciplines();
+      setDisciplines(responseDisciplines.data);
+
+      const responseTeachers = await api.getTeachers();
+      setTeachers(responseTeachers.data);
     } catch (err) {
       console.log(err);
     }
   }
 
-  if (!disciplines) return <h1>Loading...</h1>;
+  if (!disciplines || !teachers) return <h1>Loading...</h1>;
   return (
     <ContentPageModel>
       <Header />
       <ContentNavButtons>
-        <BasicTabs disciplines={disciplines} />
+        <BasicTabs disciplines={disciplines} teachers={teachers} />
       </ContentNavButtons>
     </ContentPageModel>
   );

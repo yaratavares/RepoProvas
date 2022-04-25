@@ -161,8 +161,12 @@ body{
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 49px;
       gap:17px;
+
+      >div:first-child {
+
+        margin-top: 49px;
+      }
     }
 }
 `;

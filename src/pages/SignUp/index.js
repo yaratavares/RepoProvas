@@ -7,7 +7,7 @@ import CommonInput from "../../components/inputs/CommonInput";
 import InitDivider from "../../components/divider/InitDivider";
 
 import valideRegistration from "../../validations/valideRegistration";
-import logo from "../../common/assets/logo.jpg";
+import logo from "../../common/assets/logo.png";
 import {
   ContainerCenterPage,
   InitContent,

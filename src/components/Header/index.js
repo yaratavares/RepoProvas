@@ -1,6 +1,6 @@
 import LogoutIcon from "@mui/icons-material/Logout";
 
-import logo from "../../common/assets/logo.jpg";
+import logo from "../../common/assets/logo.png";
 import { ContentHeader, ContentImgAndLogout, ContentSearchBar } from "./style";
 
 export default function Header() {
