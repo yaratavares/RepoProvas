@@ -17,7 +17,7 @@ export default async function valideLogin(
     const result = await api.authLogin(values);
 
     setAndPersistToken(result.data.token);
-    navigate("/disciplinas");
+    navigate("/");
   } catch (err) {
     if (err.message.includes(404)) {
       return toast.error("E-mail não encontrado!");

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Button, FormControl } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import FormControl from "@mui/material/FormControl";
+import LoadingButton from "@mui/lab/LoadingButton";
 import useToken from "../../common/hooks/useToken";
 
 import PasswordInput from "../../components/inputs/PasswordInput";
@@ -18,6 +19,7 @@ import {
 
 export default function SignIn() {
   const { setAndPersistToken } = useToken();
+  const [loading, setLoading] = useState(false);
   const inputsConfident = [{ name: "Senha", nameState: "password" }];
   const [values, setValues] = useState({
     password: "",
@@ -28,14 +30,16 @@ export default function SignIn() {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      navigate("/disciplinas");
+      navigate("/");
     }
   });
 
   async function login(event) {
     event.preventDefault();
+    setLoading(true);
 
     await valideLogin(setAndPersistToken, navigate, values);
+    setLoading(false);
   }
 
   return (
@@ -65,10 +69,12 @@ export default function SignIn() {
             </FormControl>
           ))}
           <ContainerClicks>
-            <p>Não possuo cadastro</p>
-            <Button type="submit" variant="contained">
+            <Link to="/cadastro">
+              <p>Não possuo cadastro</p>
+            </Link>
+            <LoadingButton loading={loading} type="submit" variant="contained">
               Entrar
-            </Button>
+            </LoadingButton>
           </ContainerClicks>
         </form>
       </ContainerCenterPage>

@@ -20,7 +20,7 @@ export default async function valideRegistration(data, navigate) {
   try {
     await api.authSignUp(data);
 
-    navigate("/");
+    navigate("/login");
   } catch (err) {
     if (err.message.includes(409)) {
       return toast.error("E-mail já cadastrado!");

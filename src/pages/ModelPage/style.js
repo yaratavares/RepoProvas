@@ -3,6 +3,7 @@ import styled from "styled-components";
 const ContentPageModel = styled.div`
   min-width: 100vh;
   min-height: 100vh;
+  padding-bottom: 20px;
   background-color: #fafafa;
 `;
 

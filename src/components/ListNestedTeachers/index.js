@@ -12,7 +12,7 @@ export default function ListNestedTeachers({ teacher }) {
   const arrayTests = teacher.disciplines.filter(
     (discipline) => discipline.tests.length !== 0
   );
-  console.log(arrayTests);
+
   return (
     <ContentBoxList>
       <ListItemButton onClick={() => setOpen(!open)}>

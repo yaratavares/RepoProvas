@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Button, FormControl } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+import FormControl from "@mui/material/FormControl";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 import PasswordInput from "../../components/inputs/PasswordInput";
 import CommonInput from "../../components/inputs/CommonInput";
@@ -17,6 +18,7 @@ import {
 
 export default function SignUp() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const inputsConfident = [
     { name: "Senha", nameState: "password" },
     { name: "Confirme sua senha", nameState: "confirmPassword" },
@@ -30,8 +32,10 @@ export default function SignUp() {
 
   async function signUp(event) {
     event.preventDefault();
+    setLoading(true);
 
     await valideRegistration(values, navigate);
+    setLoading(false);
   }
 
   return (
@@ -61,10 +65,12 @@ export default function SignUp() {
             </FormControl>
           ))}
           <ContainerClicks>
-            <p>Já possuo cadastro</p>
-            <Button variant="contained" type="submit">
+            <Link to="/login">
+              <p>Já possuo cadastro</p>
+            </Link>
+            <LoadingButton loading={loading} variant="contained" type="submit">
               Cadastrar
-            </Button>
+            </LoadingButton>
           </ContainerClicks>
         </form>
       </ContainerCenterPage>

@@ -35,7 +35,6 @@ export default function BasicTabs({ disciplines, teachers }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  console.log(teachers);
 
   return (
     <Box

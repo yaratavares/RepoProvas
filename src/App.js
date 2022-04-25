@@ -13,9 +13,9 @@ export default function App() {
         <StyleGlobal />
         <UserLoginProvider>
           <Routes>
-            <Route path="/" element={<SignIn />} />
+            <Route path="/login" element={<SignIn />} />
             <Route path="/cadastro" element={<SignUp />} />
-            <Route path="/disciplinas" element={<ModelPage />} />
+            <Route path="/" element={<ModelPage />} />
           </Routes>
         </UserLoginProvider>
       </BrowserRouter>
