@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
+import toast from "react-hot-toast";
 
 import useToken from "../../common/hooks/useToken";
 import api from "../../common/services";
@@ -16,12 +17,12 @@ export default function ModelPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(token);
     if (token) {
       initPage();
     } else {
       navigate("/login");
     }
+    // eslint-disable-next-line
   }, [token]);
 
   async function initPage() {
@@ -32,7 +33,7 @@ export default function ModelPage() {
       const responseTeachers = await api.getTeachers(token);
       setTeachers(responseTeachers.data);
     } catch (err) {
-      console.log(err);
+      toast.error("Erro com o servidor!");
     }
   }
 

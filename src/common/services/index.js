@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:5000";
 
-function configToken(token) {
+function config(token) {
   return { headers: { Authorization: `Bearer ${token}` } };
 }
 
@@ -16,12 +16,12 @@ function authSignUp(values) {
   return axios.post(`${BASE_URL}/sign-up`, { email, password });
 }
 
-function getDisciplines() {
-  return axios.get(`${BASE_URL}/disciplines`);
+function getDisciplines(token) {
+  return axios.get(`${BASE_URL}/disciplines`, config(token));
 }
 
-function getTeachers() {
-  return axios.get(`${BASE_URL}/teachers`);
+function getTeachers(token) {
+  return axios.get(`${BASE_URL}/teachers`, config(token));
 }
 
 const api = { authLogin, authSignUp, getDisciplines, getTeachers };
