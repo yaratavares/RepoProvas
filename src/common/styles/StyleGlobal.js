@@ -155,5 +155,11 @@ body{
     .toastThemed{
       color:#3F61D7 ;
     }
+
+    .contentList{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
 }
 `;

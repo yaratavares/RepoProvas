@@ -4,7 +4,9 @@ import { Button, FormControl } from "@mui/material";
 
 import PasswordInput from "../../components/inputs/PasswordInput";
 import CommonInput from "../../components/inputs/CommonInput";
+import InitDivider from "../../components/divider/InitDivider";
 
+import valideRegistration from "../../validations/valideRegistration";
 import logo from "../../common/assets/logo.jpg";
 import {
   ContainerCenterPage,
@@ -12,9 +14,6 @@ import {
   ContainerClicks,
   GithubButton,
 } from "../../common/styles/StyleInitPages";
-import InitDivider from "../../components/divider/InitDivider";
-import api from "../../common/services";
-import valideRegistration from "../../validations/valideRegistration";
 
 export default function SignUp() {
   const navigate = useNavigate();
