@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Button, FormControl } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import useToken from "../../common/hooks/useToken";
 
 import PasswordInput from "../../components/inputs/PasswordInput";
 import CommonInput from "../../components/inputs/CommonInput";
@@ -15,32 +16,31 @@ import {
 import InitDivider from "../../components/divider/InitDivider";
 import api from "../../common/services";
 
-export default function SignUp() {
-  const navigate = useNavigate();
-  const inputsConfident = [
-    { name: "Senha", nameState: "password" },
-    { name: "Confirme sua senha", nameState: "confirmPassword" },
-  ];
+export default function SignIn() {
+  const { setAndPersistToken } = useToken();
+  const inputsConfident = [{ name: "Senha", nameState: "password" }];
   const [values, setValues] = useState({
     password: "",
-    confirmPassword: "",
     email: "",
     showPassword: false,
   });
+  const navigate = useNavigate();
 
-  async function signUp(event) {
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/disciplinas");
+    }
+  });
+
+  async function login(event) {
     event.preventDefault();
 
-    if (!values.password || !values.email) {
-      return console.log("erro");
-    }
-    if (!values.password !== !values.confirmPassword) {
-      return console.log("erro");
-    }
-
     try {
-      await api.authSignUp(values);
-      navigate("/");
+      if (!values.password || !values.email) {
+        return console.log("erro");
+      }
+      const result = await api.authLogin(values);
+      setAndPersistToken(result.data.token);
     } catch (err) {
       console.log(err);
     }
@@ -50,10 +50,10 @@ export default function SignUp() {
     <InitContent>
       <img src={logo} alt="logo Repoprovas" />
       <ContainerCenterPage>
-        <h2>Cadastro</h2>
+        <h2>Login</h2>
         <GithubButton>ENTRAR COM O GITHUB</GithubButton>
         <InitDivider />
-        <form onSubmit={signUp}>
+        <form onSubmit={login}>
           <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
             <CommonInput
               setValues={setValues}
@@ -73,9 +73,9 @@ export default function SignUp() {
             </FormControl>
           ))}
           <ContainerClicks>
-            <p>Já possuo cadastro</p>
-            <Button variant="contained" type="submit">
-              Cadastrar
+            <p>Não possuo cadastro</p>
+            <Button type="submit" variant="contained">
+              Entrar
             </Button>
           </ContainerClicks>
         </form>
