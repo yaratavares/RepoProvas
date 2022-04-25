@@ -9,7 +9,6 @@ export default function UserLoginProvider({ children }) {
   );
 
   function setAndPersistToken(token) {
-    console.log(token);
     setToken(token);
     localStorage.setItem("token", JSON.stringify(token));
   }

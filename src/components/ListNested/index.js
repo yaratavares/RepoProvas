@@ -1,51 +1,31 @@
 import { useState } from "react";
 
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
-import {
-  Box,
-  Collapse,
-  List,
-  ListItemButton,
-  ListItemText,
-} from "@mui/material";
+import { Collapse, ListItemButton, ListItemText } from "@mui/material";
 
 import { ContentBoxList } from "./styled";
+import ListNestedSecondary from "./ListNestedSecondary";
 
-export default function ListNested() {
+export default function ListNested({ term }) {
   const [open, setOpen] = useState(false);
-  const [openSecundary, setOpenSecundary] = useState(false);
 
+  console.log(term);
   return (
     <ContentBoxList>
       <ListItemButton onClick={() => setOpen(!open)}>
-        <ListItemText primary="10 Período" />
-        {open ? <ExpandLess /> : <ExpandMore />}
+        <ListItemText primary={`${term.number} Período`} />
+        {term.discipline.length === 0 ? (
+          ""
+        ) : open ? (
+          <ExpandLess />
+        ) : (
+          <ExpandMore />
+        )}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        <ListItemButton
-          sx={{ pl: 3 }}
-          onClick={() => setOpenSecundary(!openSecundary)}
-        >
-          <ListItemText primary="CSS" />
-          {open ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
-      </Collapse>
-
-      <Collapse in={openSecundary} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText primary="P1" secondary="2022 - globo.com (Fulano)" />
-          </ListItemButton>
-        </List>
-      </Collapse>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <ListItemButton
-          sx={{ pl: 3 }}
-          onClick={() => setOpenSecundary(!openSecundary)}
-        >
-          <ListItemText primary="CSS" />
-          {open ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
+        {term.discipline.map((discipline) => (
+          <ListNestedSecondary discipline={discipline} />
+        ))}
       </Collapse>
     </ContentBoxList>
   );

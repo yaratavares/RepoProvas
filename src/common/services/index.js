@@ -16,6 +16,10 @@ function authSignUp(values) {
   return axios.post(`${BASE_URL}/sign-up`, { email, password });
 }
 
-const api = { authLogin, authSignUp };
+function getDisciplines() {
+  return axios.get(`${BASE_URL}/disciplines`);
+}
+
+const api = { authLogin, authSignUp, getDisciplines };
 
 export default api;

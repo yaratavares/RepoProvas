@@ -5,7 +5,6 @@ const ContentBoxList = styled.div`
   background-color: white;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   border-radius: 4px;
-  margin-top: 49px;
   display: "block";
 `;
 export { ContentBoxList };

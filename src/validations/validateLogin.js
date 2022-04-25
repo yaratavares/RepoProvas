@@ -6,7 +6,6 @@ export default async function valideLogin(
   navigate,
   values
 ) {
-  console.log(values);
   if (!values.email || !values.password) {
     return toast.error("Preencha todos os campos!");
   }

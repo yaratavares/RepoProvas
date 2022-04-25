@@ -1,10 +1,8 @@
-import * as React from "react";
-import PropTypes from "prop-types";
+import { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { ContentListModel } from "./style";
+
 import ListNested from "../ListNested";
 
 function TabPanel(props) {
@@ -30,8 +28,8 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs() {
-  const [value, setValue] = React.useState(0);
+export default function BasicTabs({ disciplines }) {
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -58,7 +56,9 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0} className="contentList">
-        <ListNested />
+        {disciplines.map((term) => (
+          <ListNested term={term} />
+        ))}
       </TabPanel>
       <TabPanel value={value} index={1} className="contentList">
         <ListNested />
