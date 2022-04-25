@@ -5,7 +5,9 @@ import useToken from "../../common/hooks/useToken";
 
 import PasswordInput from "../../components/inputs/PasswordInput";
 import CommonInput from "../../components/inputs/CommonInput";
+import InitDivider from "../../components/divider/InitDivider";
 
+import valideLogin from "../../validations/validateLogin";
 import logo from "../../common/assets/logo.jpg";
 import {
   ContainerCenterPage,
@@ -13,8 +15,6 @@ import {
   ContainerClicks,
   GithubButton,
 } from "../../common/styles/StyleInitPages";
-import InitDivider from "../../components/divider/InitDivider";
-import api from "../../common/services";
 
 export default function SignIn() {
   const { setAndPersistToken } = useToken();
@@ -35,15 +35,7 @@ export default function SignIn() {
   async function login(event) {
     event.preventDefault();
 
-    try {
-      if (!values.password || !values.email) {
-        return console.log("erro");
-      }
-      const result = await api.authLogin(values);
-      setAndPersistToken(result.data.token);
-    } catch (err) {
-      console.log(err);
-    }
+    await valideLogin(setAndPersistToken, navigate, values);
   }
 
   return (

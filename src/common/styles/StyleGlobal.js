@@ -151,5 +151,9 @@ body{
         cursor: pointer;
         }
     }
+
+    .toastThemed{
+      color:#3F61D7 ;
+    }
 }
 `;

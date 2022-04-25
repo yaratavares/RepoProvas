@@ -14,6 +14,7 @@ import {
 } from "../../common/styles/StyleInitPages";
 import InitDivider from "../../components/divider/InitDivider";
 import api from "../../common/services";
+import valideRegistration from "../../validations/valideRegistration";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -31,19 +32,7 @@ export default function SignUp() {
   async function signUp(event) {
     event.preventDefault();
 
-    if (!values.password || !values.email) {
-      return console.log("erro");
-    }
-    if (!values.password !== !values.confirmPassword) {
-      return console.log("erro");
-    }
-
-    try {
-      await api.authSignUp(values);
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-    }
+    await valideRegistration(values, navigate);
   }
 
   return (
