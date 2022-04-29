@@ -16,13 +16,9 @@ export default function CommonInput({
         {inputLabel}
       </InputLabel>
       <OutlinedInput
-        id="outlined-adornment-weight"
+        id={`input${inputState}`}
         value={values[inputState]}
         onChange={handleChange({ inputState })}
-        aria-describedby="outlined-weight-helper-text"
-        inputProps={{
-          "aria-label": "weight",
-        }}
         label={inputLabel}
       />
     </>

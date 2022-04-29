@@ -30,11 +30,9 @@ export default function PasswordInput({
 
   return (
     <>
-      <InputLabel htmlFor={`outlined-adornment-${inputState}`}>
-        {inputLabel}
-      </InputLabel>
+      <InputLabel htmlFor={`input${inputState}`}>{inputLabel}</InputLabel>
       <OutlinedInput
-        id={`outlined-adornment-${inputState}`}
+        id={`input${inputState}`}
         type={values.showPassword ? "text" : "password"}
         value={values[inputState]}
         onChange={handleChange({ inputState })}

@@ -13,7 +13,7 @@ import { ContentNavButtons, ContentPageModel } from "./style";
 export default function ModelPage() {
   const [disciplines, setDisciplines] = useState();
   const [teachers, setTeachers] = useState();
-  const { token } = useToken();
+  const { token, logout } = useToken();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,7 +33,11 @@ export default function ModelPage() {
       const responseTeachers = await api.getTeachers(token);
       setTeachers(responseTeachers.data);
     } catch (err) {
-      toast.error("Erro com o servidor!");
+      if (err.message.includes(401)) {
+        toast.error("Faça login!");
+        logout();
+      }
+      toast.error("Erro com o servidor! Atualize a página");
     }
   }
 
