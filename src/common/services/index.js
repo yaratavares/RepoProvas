@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000";
-// "https://backend-repositorioprovas.herokuapp.com";
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 function config(token) {
   return { headers: { Authorization: `Bearer ${token}` } };
