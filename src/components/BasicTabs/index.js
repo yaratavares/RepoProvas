@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 
 import ListNestedDisciplines from "../ListNestedDisciplines";
 import ListNestedTeachers from "../ListNestedTeachers";
+import AddTest from "../AddTest";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -83,7 +84,9 @@ export default function BasicTabs({
           <ListNestedTeachers teacher={teacher} />
         ))}
       </TabPanel>
-      <TabPanel value={value} index={2} className="contentList" />
+      <TabPanel value={value} index={2} className="contentList">
+        <AddTest />
+      </TabPanel>
     </Box>
   );
 }
