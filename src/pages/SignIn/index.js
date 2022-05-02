@@ -47,7 +47,10 @@ export default function SignIn() {
       <img src={logo} alt="logo Repoprovas" />
       <ContainerCenterPage>
         <h2>Login</h2>
-        <GithubButton>ENTRAR COM O GITHUB</GithubButton>
+        <a href="http://localhost:5000/github">
+          <GithubButton>ENTRAR COM O GITHUB</GithubButton>
+        </a>
+
         <InitDivider />
         <form onSubmit={login}>
           <FormControl fullWidth sx={{ m: 1 }} variant="outlined">

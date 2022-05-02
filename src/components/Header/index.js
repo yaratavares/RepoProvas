@@ -4,8 +4,16 @@ import logo from "../../common/assets/logo.png";
 import useToken from "../../common/hooks/useToken";
 import { ContentHeader, ContentImgAndLogout, ContentSearchBar } from "./style";
 
-export default function Header() {
+export default function Header({ tabLabel, value, setValue }) {
   const { logout } = useToken();
+
+  function handleChange(event) {
+    if (event.value === "") {
+      setValue();
+    } else {
+      setValue({ ...value, [tabLabel]: event.value });
+    }
+  }
 
   return (
     <ContentHeader>
@@ -14,7 +22,16 @@ export default function Header() {
         <LogoutIcon fontSize="large" className="iconLogout" onClick={logout} />
       </ContentImgAndLogout>
       <ContentSearchBar>
-        <input placeholder={`Pesquise por disciplina`}></input>
+        {tabLabel ? (
+          <input
+            value={value ? value[tabLabel] : ""}
+            onChange={(e) => handleChange(e.target)}
+            name="search"
+            placeholder={`Pesquise por ${tabLabel}`}
+          ></input>
+        ) : (
+          <h2>Adicione uma prova</h2>
+        )}
       </ContentSearchBar>
     </ContentHeader>
   );

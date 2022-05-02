@@ -10,22 +10,22 @@ export default function ListNestedDisciplines({ term }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <ContentBoxList>
-      <ListItemButton onClick={() => setOpen(!open)}>
-        <ListItemText primary={`${term.number} Período`} />
-        {term.discipline.length === 0 ? (
-          ""
-        ) : open ? (
-          <ExpandLess />
-        ) : (
-          <ExpandMore />
-        )}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        {term.discipline.map((discipline) => (
-          <ListNestedSecondary discipline={discipline} />
-        ))}
-      </Collapse>
-    </ContentBoxList>
+    <>
+      {term.discipline.length === 0 ? (
+        ""
+      ) : (
+        <ContentBoxList>
+          <ListItemButton onClick={() => setOpen(!open)}>
+            <ListItemText primary={`${term.number} Período`} />
+            {open ? <ExpandLess /> : <ExpandMore />}
+          </ListItemButton>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            {term.discipline.map((discipline) => (
+              <ListNestedSecondary discipline={discipline} />
+            ))}
+          </Collapse>
+        </ContentBoxList>
+      )}
+    </>
   );
 }

@@ -20,10 +20,25 @@ function getDisciplines(token) {
   return axios.get(`${BASE_URL}/disciplines`, config(token));
 }
 
+function searchDisciplines(token, words) {
+  return axios.get(`${BASE_URL}/disciplines/${words}`, config(token));
+}
+
 function getTeachers(token) {
   return axios.get(`${BASE_URL}/teachers`, config(token));
 }
 
-const api = { authLogin, authSignUp, getDisciplines, getTeachers };
+function searchTeachers(token, words) {
+  return axios.get(`${BASE_URL}/teachers/${words}`, config(token));
+}
+
+const api = {
+  authLogin,
+  authSignUp,
+  getDisciplines,
+  getTeachers,
+  searchDisciplines,
+  searchTeachers,
+};
 
 export default api;

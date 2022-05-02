@@ -29,10 +29,27 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs({ disciplines, teachers }) {
+export default function BasicTabs({
+  disciplines,
+  teachers,
+  setTabLabel,
+  setSearch,
+}) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
+    if (newValue === 0) {
+      setTabLabel("disciplina");
+      setSearch();
+    }
+    if (newValue === 1) {
+      setTabLabel("instrutor");
+      setSearch();
+    }
+    if (newValue === 2) {
+      setTabLabel(false);
+      setSearch();
+    }
     setValue(newValue);
   };
 
@@ -53,7 +70,7 @@ export default function BasicTabs({ disciplines, teachers }) {
         >
           <Tab label="Disciplinas" {...a11yProps(0)} />
           <Tab label="Instrutores" {...a11yProps(1)} />
-          <Tab label="Adicionar" {...a11yProps(2)} disabled />
+          <Tab label="Adicionar" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0} className="contentList">
