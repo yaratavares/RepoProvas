@@ -49,10 +49,12 @@ export default function ModelPage() {
       const disciplines = await api.inputAddInformations.getAllDisciplines(
         token
       );
+      const teachers = await api.inputAddInformations.getAllTeachers(token);
       setInputAddInformations({
         ...inputAddInformations,
         categories: categories.data,
         disciplines: disciplines.data,
+        teachers: teachers.data,
       });
     } catch (err) {
       if (err.message.includes(401)) {
@@ -62,7 +64,6 @@ export default function ModelPage() {
       toast.error("Erro com o servidor! Atualize a página");
     }
   }
-  console.log(inputAddInformations);
 
   async function filterDisciplines() {
     try {
@@ -78,8 +79,6 @@ export default function ModelPage() {
 
   async function filterTeachers() {
     try {
-      console.log("Filtrando professores");
-      console.log(search);
       const responseTeachers = await api.searchTeachers(
         token,
         search.instrutor

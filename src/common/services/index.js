@@ -40,7 +40,19 @@ function getAllDisciplines(token) {
   return axios.get(`${BASE_URL}/disciplines`, config(token));
 }
 
-const inputAddInformations = { getAllCategories, getAllDisciplines };
+function getAllTeachers(token) {
+  return axios.get(`${BASE_URL}/teachers`, config(token));
+}
+
+function addNewtest(data, token) {
+  return axios.post(`${BASE_URL}/tests`, data, config(token));
+}
+
+const inputAddInformations = {
+  getAllCategories,
+  getAllDisciplines,
+  getAllTeachers,
+};
 
 const api = {
   authLogin,
@@ -50,6 +62,7 @@ const api = {
   searchDisciplines,
   searchTeachers,
   inputAddInformations,
+  addNewtest,
 };
 
 export default api;

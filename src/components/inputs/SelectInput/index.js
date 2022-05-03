@@ -23,9 +23,13 @@ export default function SelectInput({
         label={inputLabel}
         onChange={handleChange({ inputState })}
       >
-        {itensMenu.map((item) => (
-          <MenuItem value={item.id}>{item.name}</MenuItem>
-        ))}
+        {itensMenu.length > 0
+          ? itensMenu.map((item) => (
+              <MenuItem value={item.id}>
+                {item.name || item.teacher.name}
+              </MenuItem>
+            ))
+          : ""}
       </Select>
     </>
   );

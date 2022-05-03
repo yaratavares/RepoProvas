@@ -47,13 +47,16 @@ export default function SignIn() {
       <img src={logo} alt="logo Repoprovas" />
       <ContainerCenterPage>
         <h2>Login</h2>
-        <a href="http://localhost:5000/github">
-          <GithubButton>ENTRAR COM O GITHUB</GithubButton>
-        </a>
+
+        <GithubButton>ENTRAR COM O GITHUB</GithubButton>
 
         <InitDivider />
         <form onSubmit={login}>
-          <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+          <FormControl
+            fullWidth
+            sx={{ m: 1, margin: "8px 0" }}
+            variant="outlined"
+          >
             <CommonInput
               setValues={setValues}
               values={values}
@@ -62,7 +65,11 @@ export default function SignIn() {
             />
           </FormControl>
           {inputsConfident.map((input) => (
-            <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+            <FormControl
+              fullWidth
+              sx={{ m: 1, margin: "8px 0" }}
+              variant="outlined"
+            >
               <PasswordInput
                 setValues={setValues}
                 values={values}
