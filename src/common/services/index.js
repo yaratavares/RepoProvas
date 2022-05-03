@@ -17,20 +17,30 @@ function authSignUp(values) {
 }
 
 function getDisciplines(token) {
-  return axios.get(`${BASE_URL}/disciplines`, config(token));
+  return axios.get(`${BASE_URL}/filter/disciplines`, config(token));
 }
 
 function searchDisciplines(token, words) {
-  return axios.get(`${BASE_URL}/disciplines/${words}`, config(token));
+  return axios.get(`${BASE_URL}/filter/disciplines/${words}`, config(token));
 }
 
 function getTeachers(token) {
-  return axios.get(`${BASE_URL}/teachers`, config(token));
+  return axios.get(`${BASE_URL}/filter/teachers`, config(token));
 }
 
 function searchTeachers(token, words) {
-  return axios.get(`${BASE_URL}/teachers/${words}`, config(token));
+  return axios.get(`${BASE_URL}/filter/teachers/${words}`, config(token));
 }
+
+function getAllCategories(token) {
+  return axios.get(`${BASE_URL}/categories`, config(token));
+}
+
+function getAllDisciplines(token) {
+  return axios.get(`${BASE_URL}/disciplines`, config(token));
+}
+
+const inputAddInformations = { getAllCategories, getAllDisciplines };
 
 const api = {
   authLogin,
@@ -39,6 +49,7 @@ const api = {
   getTeachers,
   searchDisciplines,
   searchTeachers,
+  inputAddInformations,
 };
 
 export default api;

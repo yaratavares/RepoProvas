@@ -7,6 +7,7 @@ export default function SelectInput({
   setValues,
   inputLabel,
   inputState,
+  itensMenu,
 }) {
   const handleChange = (props) => (event) => {
     setValues({ ...values, [props.inputState]: event.target.value });
@@ -22,9 +23,9 @@ export default function SelectInput({
         label={inputLabel}
         onChange={handleChange({ inputState })}
       >
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
+        {itensMenu.map((item) => (
+          <MenuItem value={item.id}>{item.name}</MenuItem>
+        ))}
       </Select>
     </>
   );

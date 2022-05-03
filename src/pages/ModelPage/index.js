@@ -15,6 +15,7 @@ export default function ModelPage() {
   const [teachers, setTeachers] = useState();
   const [search, setSearch] = useState();
   const [tabLabel, setTabLabel] = useState("disciplina");
+  const [inputAddInformations, setInputAddInformations] = useState({});
   const { token, logout } = useToken();
   const navigate = useNavigate();
 
@@ -43,6 +44,16 @@ export default function ModelPage() {
 
       const responseTeachers = await api.getTeachers(token);
       setTeachers(responseTeachers.data);
+
+      const categories = await api.inputAddInformations.getAllCategories(token);
+      const disciplines = await api.inputAddInformations.getAllDisciplines(
+        token
+      );
+      setInputAddInformations({
+        ...inputAddInformations,
+        categories: categories.data,
+        disciplines: disciplines.data,
+      });
     } catch (err) {
       if (err.message.includes(401)) {
         toast.error("Faça login!");
@@ -51,6 +62,7 @@ export default function ModelPage() {
       toast.error("Erro com o servidor! Atualize a página");
     }
   }
+  console.log(inputAddInformations);
 
   async function filterDisciplines() {
     try {
@@ -88,6 +100,7 @@ export default function ModelPage() {
             teachers={teachers}
             setTabLabel={setTabLabel}
             setSearch={setSearch}
+            input={inputAddInformations}
           />
         ) : (
           <CircularProgress />

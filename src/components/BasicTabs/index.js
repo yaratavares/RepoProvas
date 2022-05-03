@@ -35,6 +35,7 @@ export default function BasicTabs({
   teachers,
   setTabLabel,
   setSearch,
+  input,
 }) {
   const [value, setValue] = useState(0);
 
@@ -85,7 +86,7 @@ export default function BasicTabs({
         ))}
       </TabPanel>
       <TabPanel value={value} index={2} className="contentList">
-        <AddTest />
+        <AddTest inputItens={input} />
       </TabPanel>
     </Box>
   );

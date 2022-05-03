@@ -6,7 +6,7 @@ import ContentBoxList from "./style";
 import SelectInput from "../inputs/SelectInput";
 import { LoadingButton } from "@mui/lab";
 
-export default function AddTest() {
+export default function AddTest({ inputItens }) {
   const [loading, setLoading] = useState(false);
   const [values, setValues] = useState({
     title: "",
@@ -41,6 +41,7 @@ export default function AddTest() {
           setValues={setValues}
           inputLabel={"Categoria"}
           inputState={"category"}
+          itensMenu={inputItens.categories}
         />
       </FormControl>
       <FormControl fullWidth sx={{ m: 1, margin: "8px 0" }} variant="outlined">
@@ -49,9 +50,10 @@ export default function AddTest() {
           setValues={setValues}
           inputLabel={"Disciplina"}
           inputState={"discipline"}
+          itensMenu={inputItens.disciplines}
         />
       </FormControl>
-      <FormControl
+      {/* <FormControl
         fullWidth
         sx={{ m: 1, margin: "8px 0" }}
         variant="outlined"
@@ -63,7 +65,7 @@ export default function AddTest() {
           inputLabel={"Pessoa instrutora"}
           inputState={"teacher"}
         />
-      </FormControl>
+      </FormControl> */}
       <LoadingButton
         loading={loading}
         sx={{ marginTop: "26px", height: "46px" }}
