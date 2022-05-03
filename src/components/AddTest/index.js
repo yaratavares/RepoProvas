@@ -9,7 +9,7 @@ import useToken from "../../common/hooks/useToken";
 import validateNewTest from "../../validations/validateNewTest";
 import ContentBoxList from "./style";
 
-export default function AddTest({ inputItens }) {
+export default function AddTest({ inputItens, reloadPage }) {
   const [loading, setLoading] = useState(false);
   const { token } = useToken();
   const [values, setValues] = useState({
@@ -27,6 +27,7 @@ export default function AddTest({ inputItens }) {
   async function handleSubmitForm(event) {
     event.preventDefault();
     await validateNewTest(values, token);
+    reloadPage();
   }
 
   return (

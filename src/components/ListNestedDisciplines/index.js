@@ -6,7 +6,7 @@ import { Collapse, ListItemButton, ListItemText } from "@mui/material";
 import { ContentBoxList } from "./styled";
 import ListNestedSecondary from "./ListNestedSecondary";
 
-export default function ListNestedDisciplines({ term }) {
+export default function ListNestedDisciplines({ term, reloadPage }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -21,7 +21,10 @@ export default function ListNestedDisciplines({ term }) {
           </ListItemButton>
           <Collapse in={open} timeout="auto" unmountOnExit>
             {term.discipline.map((discipline) => (
-              <ListNestedSecondary discipline={discipline} />
+              <ListNestedSecondary
+                discipline={discipline}
+                reloadPage={reloadPage}
+              />
             ))}
           </Collapse>
         </ContentBoxList>

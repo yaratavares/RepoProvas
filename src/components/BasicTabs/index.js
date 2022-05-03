@@ -36,6 +36,7 @@ export default function BasicTabs({
   setTabLabel,
   setSearch,
   input,
+  reloadPage,
 }) {
   const [value, setValue] = useState(0);
 
@@ -77,16 +78,16 @@ export default function BasicTabs({
       </Box>
       <TabPanel value={value} index={0} className="contentList">
         {disciplines.map((term) => (
-          <ListNestedDisciplines term={term} />
+          <ListNestedDisciplines term={term} reloadPage={reloadPage} />
         ))}
       </TabPanel>
       <TabPanel value={value} index={1} className="contentList">
         {teachers.map((teacher) => (
-          <ListNestedTeachers teacher={teacher} />
+          <ListNestedTeachers teacher={teacher} reloadPage={reloadPage} />
         ))}
       </TabPanel>
       <TabPanel value={value} index={2} className="contentList">
-        <AddTest inputItens={input} />
+        <AddTest inputItens={input} reloadPage={reloadPage} />
       </TabPanel>
     </Box>
   );

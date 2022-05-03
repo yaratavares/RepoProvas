@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import api from "../common/services/index";
 
-export default async function validateNewTest(navigate, values, token) {
+export default async function validateNewTest(values, token) {
   if (
     !values.name ||
     !values.pdfUrl ||

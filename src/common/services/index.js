@@ -48,6 +48,10 @@ function addNewtest(data, token) {
   return axios.post(`${BASE_URL}/tests`, data, config(token));
 }
 
+function updateViews(id, token) {
+  return axios.post(`${BASE_URL}/tests/${id}`, config(token));
+}
+
 const inputAddInformations = {
   getAllCategories,
   getAllDisciplines,
@@ -63,6 +67,7 @@ const api = {
   searchTeachers,
   inputAddInformations,
   addNewtest,
+  updateViews,
 };
 
 export default api;

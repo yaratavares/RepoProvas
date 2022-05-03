@@ -6,7 +6,7 @@ import { Collapse, ListItemButton, ListItemText } from "@mui/material";
 import { ContentBoxList } from "./styled";
 import ListNestedSecondary from "./ListNestedSecondary";
 
-export default function ListNestedTeachers({ teacher }) {
+export default function ListNestedTeachers({ teacher, reloadPage }) {
   const [open, setOpen] = useState(false);
 
   const arrayTests = teacher.disciplines.filter(
@@ -23,7 +23,7 @@ export default function ListNestedTeachers({ teacher }) {
         {arrayTests.length !== 0
           ? arrayTests.map((disciplines) =>
               disciplines.tests.map((test) => (
-                <ListNestedSecondary test={test} />
+                <ListNestedSecondary test={test} reloadPage={reloadPage} />
               ))
             )
           : ""}

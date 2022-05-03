@@ -9,6 +9,7 @@ import BasicTabs from "../../components/BasicTabs";
 import Header from "../../components/Header";
 
 import { ContentNavButtons, ContentPageModel } from "./style";
+import initPageFunction from "../../common/utils/initPageFunction";
 
 export default function ModelPage() {
   const [disciplines, setDisciplines] = useState();
@@ -38,31 +39,14 @@ export default function ModelPage() {
   }, [token, search]);
 
   async function initPage() {
-    try {
-      const responseDisciplines = await api.getDisciplines(token);
-      setDisciplines(responseDisciplines.data);
-
-      const responseTeachers = await api.getTeachers(token);
-      setTeachers(responseTeachers.data);
-
-      const categories = await api.inputAddInformations.getAllCategories(token);
-      const disciplines = await api.inputAddInformations.getAllDisciplines(
-        token
-      );
-      const teachers = await api.inputAddInformations.getAllTeachers(token);
-      setInputAddInformations({
-        ...inputAddInformations,
-        categories: categories.data,
-        disciplines: disciplines.data,
-        teachers: teachers.data,
-      });
-    } catch (err) {
-      if (err.message.includes(401)) {
-        toast.error("Faça login!");
-        logout();
-      }
-      toast.error("Erro com o servidor! Atualize a página");
-    }
+    await initPageFunction(
+      setDisciplines,
+      setTeachers,
+      inputAddInformations,
+      setInputAddInformations,
+      token,
+      logout
+    );
   }
 
   async function filterDisciplines() {
@@ -100,6 +84,7 @@ export default function ModelPage() {
             setTabLabel={setTabLabel}
             setSearch={setSearch}
             input={inputAddInformations}
+            reloadPage={initPage}
           />
         ) : (
           <CircularProgress />
