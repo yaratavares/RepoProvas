@@ -29,7 +29,7 @@ export default function ListNestedSecondary({ discipline, reloadPage }) {
         onClick={() => setOpenSecundary(!openSecundary)}
       >
         <ListItemText primary={`${discipline.name}`} />
-        {discipline.teachers[0].tests.length === 0 ? (
+        { discipline.teachers.length === 0  ? (
           ""
         ) : openSecundary ? (
           <ExpandLess />
@@ -38,7 +38,7 @@ export default function ListNestedSecondary({ discipline, reloadPage }) {
         )}
       </ListItemButton>
       <Collapse in={openSecundary} timeout="auto" unmountOnExit>
-        {discipline.teachers[0].tests.map((test) => (
+        {discipline.teachers.length === 0 ? '' : discipline.teachers[0].tests.map((test) => (
           <List
             component="div"
             disablePadding
