@@ -10,6 +10,7 @@
 </p>
 <p align="center">
  <a href="#projeto">Projeto</a> •
+  <a href="#objetivo">Objetivo</a> •
  <a href="#funcionalidades">Funcionalidades</a> •
  <a href="#layout">Layout</a> • 
  <a href="#como-executar">Como executar</a> • 
@@ -21,6 +22,14 @@
 ## 💻 Projeto
 
 No RepoProvas qualquer pessoa pode procurar provas antigas de suas disciplinas e professores ou enviar provas antigas para ajudar os calouros.
+
+Back-end projetado para um sistema de compartilhamento de provas entre estudantes.
+
+---
+
+## ✨ Objetivo
+
+O principal objetivo do projeto foi aplicar o conceito das migrações e ORM e para isso utilizei o [Prisma](https://www.prisma.io/), usando um banco de dados relacional. Para um código mais limpo e organizado utilizei Layered Architecture (Routers, Controllers, Services e Repositories) e Typescript no desenvolvimento, para um código mais limpo e organizado.
 
 ---
 
