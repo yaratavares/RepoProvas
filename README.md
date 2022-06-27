@@ -1,5 +1,23 @@
-# RepoStore
+# RepoProvas
 
+<p align="center">
+<img src='https://wakatime.com/badge/user/97595b44-027b-4695-a588-53e9c884f7e2/project/813c7ae2-9fc9-4714-a5d7-14b959590dfc.svg'>
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/yaratavares/RepoProvas">
+<a href="https://github.com/yaratavares/RepoProvas/commits/main">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/yaratavares/RepoProvas">
+  </a>
+   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen"></p>
+</p>
+<p align="center">
+ <a href="#projeto">Projeto</a> •
+ <a href="#funcionalidades">Funcionalidades</a> •
+ <a href="#layout">Layout</a> • 
+ <a href="#como-executar">Como executar</a> • 
+ <a href="#autora">Autora</a> • 
+ <a href="#licença">Licença</a>
+</p>
+
+---
 ## 💻 Projeto
 
 No RepoProvas qualquer pessoa pode procurar provas antigas de suas disciplinas e professores ou enviar provas antigas para ajudar os calouros.
@@ -21,6 +39,7 @@ No RepoProvas qualquer pessoa pode procurar provas antigas de suas disciplinas e
     - [x] adicionar uma nova prova
     - [x] clicar na prova e contabilizar o seu view
 
+---
 ## 🎨 Layout
 
 O layout da aplicação está disponível no Figma:
@@ -35,6 +54,7 @@ O layout da aplicação está disponível no Figma:
   <img alt="Made by yaratavares" src="./src/common/assets/repoprovas.gif">
 </a>
 
+---
 ## 🚀 Como executar o projeto
 
 Este projeto está dividido em duas partes:
@@ -63,6 +83,7 @@ $ npm install
 $ npm run start
 # A aplicação será aberta na porta:3000 - acesse http://localhost:3000
 ```
+---
 ## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
@@ -106,6 +127,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 > Veja o arquivo [package.json](https://github.com/yaratavares/API-RepoProvas/blob/main/package.json)
 
+---
 ## 🧜‍♀️ Autora
 
 <a href="https://www.linkedin.com/in/yaracristinatavares/" >
